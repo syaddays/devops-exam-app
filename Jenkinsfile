@@ -102,7 +102,7 @@ pipeline {
         echo '🚀 Pipeline finished successfully!'
     }
     failure {
-        // This block runs if any main stage fails.
+        // This block runs if any main stage fails.b
         echo '❗ Pipeline failed. Check logs for errors.'
         // This command helps debug failures by showing container logs.
         sh 'docker compose logs --tail=50 || true'
