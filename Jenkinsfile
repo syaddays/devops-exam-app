@@ -100,7 +100,7 @@ pipeline {
         // Post-build actions for success, failure, and cleanup
         success {
             echo '🚀 Pipeline finished successfully!'
-            sh 'docker compose ps'
+           
         }
         failure {
             echo '❗ Pipeline failed. Check logs for errors.'
