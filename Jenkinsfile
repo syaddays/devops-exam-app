@@ -96,19 +96,22 @@ pipeline {
         }
     }
 
-    post {
-        // Post-build actions for success, failure, and cleanup
-        success {
-            echo '🚀 Pipeline finished successfully!'
-           
-        }
-        failure {
-            echo '❗ Pipeline failed. Check logs for errors.'
-            sh 'docker compose logs --tail=50 || true'
-        }
-        always {
-            echo 'Cleaning up workspace.'
-            cleanWs()
-        }
+   post {
+    success {
+        // This block now only prints a success message.
+        echo '🚀 Pipeline finished successfully!'
     }
+    failure {
+        // This block runs if any main stage fails.
+        echo '❗ Pipeline failed. Check logs for errors.'
+        // This command helps debug failures by showing container logs.
+        sh 'docker compose logs --tail=50 || true'
+    }
+    always {
+        // This block runs every time, after success or failure.
+        // It's the perfect place for cleanup.
+        echo 'Cleaning up workspace.'
+        cleanWs()
+    }
+}
 }
